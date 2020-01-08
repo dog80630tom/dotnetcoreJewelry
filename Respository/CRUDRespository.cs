@@ -24,10 +24,9 @@ namespace Jewelry.Respository
         }
  
         public bool Crate(T enity)
-        {
-                
-                    _context.Entry(enity).State = EntityState.Added;
-                
+        {    
+         
+            _context.Entry(enity).State = EntityState.Added;
 
             return true;
         }
