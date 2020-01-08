@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Jewelry.Respository
 {
-    public class CRUDRespository<T>: ICRUD<T>
+    public class CRUDRespository<T>: ICRUD<T> where T:class
     {
         private DataContext _context;
         public CRUDRespository(DataContext context)
@@ -69,6 +70,11 @@ namespace Jewelry.Respository
                 var products = conn.Query<T>(sql);
                 return products;
             }
+        }
+
+        public async Task<T> GetDataByID(int id)
+        {
+           return await  _context.Set<T>().FindAsync(id);
         }
     }
 }
