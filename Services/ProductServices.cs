@@ -7,16 +7,12 @@ using System.Threading.Tasks;
 
 namespace Jewelry.Services
 {
-    public class ProductServices
+    public class ProductServices 
     {
         private CRUDRespository<Product> _ProductNew;
         private CRUDRespository<PicDetail> _PicNew;
 
-        public ProductServices(CRUDRespository<Product> ProductNew, CRUDRespository<PicDetail> PicNew) {
-
-            _ProductNew = ProductNew;
-            _PicNew = PicNew;
-        }
+    
 
         public bool CreateProduct(Product product,PicDetail pic) {
             try
