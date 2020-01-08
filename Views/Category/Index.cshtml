@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Jewelry.Models.Category>
+
+@{
+    ViewBag.Title = "分類管理";
+}
+
+
+<div class="content-title mx-auto" style="width:75vw !important">
+    <h2>分類管理</h2>
+</div>
+<table class="table mx-auto" style="width:75vw !important">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.CategoryPic)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryDescription)
+            </th>
+            <th class="text-right">
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn-mytype btn-mycreatetype mr-2" })
+            </th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.CategoryPic)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryDescription)
+                </td>
+                <td class="text-right">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID } , new { @class = "btn-mytype btn-myedittype mr-2" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CategoryID } , new { @class = "btn-mytype btn-mydetailtype mr-2" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID } , new { @class = "btn-mytype btn-mydeletetype mr-2" })
+                </td>
+            </tr>
+        }
+    </tbody>
+    
+
+</table>
+
+
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="CanNotDeleteCategory" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="CanNotDeleteCategory">無法刪除此種類</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">請先刪除屬於該種類的產品</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">確定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Endscripts{
+    <script>
+
+        if ('@TempData["CanNotDelete"]'=='True') {
+            $('#modal2').modal('show');
+            }
+    </script>
+}

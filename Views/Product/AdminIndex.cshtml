@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後台管理者頁面</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/Chart.css" rel="stylesheet" />
+    <link href="~/css/fontawesome-all.css" rel="stylesheet" />
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/style-responsive.css" rel="stylesheet" />
+    <link href="~/css/table-responsive.css" rel="stylesheet" />
+    <link href="~/css/to-do.css" rel="stylesheet" />
+    <link href="~/css/zabuto_calendar.css" rel="stylesheet" />
+
+
+
+
+    @RenderSection("TopCss", required: false)
+    @RenderSection("Topscripts", required: false)
+</head>
+<body>
+    <div id="container" class="">
+    </div>
+    <script src="~/js/umd/popper.js"></script>
+    <script src="~/js/jquery.scrollTo.min.js"></script>
+    <script src="~/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/dataTables.select.min.js"></script>
+    <script src="~/js/datatables.min.js"></script>
+    <script src="~/js/Cart.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/vue.js"></script>
+    @RenderSection("scripts", required: false)
+    @RenderSection("EndCss", required: false)
+    @RenderSection("Endscripts", required: false)
+</body>
+</html>
