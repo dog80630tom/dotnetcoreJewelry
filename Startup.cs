@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Jewelry.Models;
 
 namespace Jewelry
 {
@@ -37,6 +37,7 @@ namespace Jewelry
                 options.Cookie.IsEssential = true;
             });
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
+            services.AddTransient<ICRUD<Product>, CRUDRespository<Product>>();
             services.AddControllersWithViews();
         }
 
