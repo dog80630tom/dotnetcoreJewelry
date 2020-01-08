@@ -37,7 +37,7 @@ namespace Jewelry
                 options.Cookie.IsEssential = true;
             });
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
-            services.AddTransient<ICRUD<Product>, CRUDRespository<Product>>();
+            services.AddScoped(typeof(ICRUD<>), typeof(CRUDRespository<>));
             services.AddControllersWithViews();
         }
 
