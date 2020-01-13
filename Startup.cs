@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Jewelry.Models;
+using Jewelry.Respository.MemberResp;
 
 namespace Jewelry
 {
@@ -37,7 +38,8 @@ namespace Jewelry
                 options.Cookie.IsEssential = true;
             });
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
-            services.AddScoped(typeof(ICRUD<>), typeof(CRUDRespository<>));
+            services.AddTransient<IEncryption, Encryption>();
+            services.AddScoped(typeof(ICRUD<>),typeof(CRUDRespository<>));
             services.AddControllersWithViews();
         }
 

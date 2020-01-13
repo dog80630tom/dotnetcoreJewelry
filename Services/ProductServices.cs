@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Jewelry.Services
 {
-    public class ProductServices 
+    public class ProductServices
     {
-        private CRUDRespository<Product> _ProductNew;
-        private CRUDRespository<PicDetail> _PicNew;
+        private static DataContext context;
+        private CRUDRespository<Product> _ProductNew=new CRUDRespository<Product>(context);
+        private CRUDRespository<PicDetail> _PicNew=new CRUDRespository<PicDetail>(context);
 
-    
-
+      
         public bool CreateProduct(Product product,PicDetail pic) {
             try
             {
