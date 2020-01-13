@@ -9,15 +9,11 @@ namespace Jewelry.Services
 {
     public class ProductServices
     {
-        private CRUDRespository<Product> _ProductNew;
-        private CRUDRespository<PicDetail> _PicNew;
+        private static DataContext context;
+        private CRUDRespository<Product> _ProductNew=new CRUDRespository<Product>(context);
+        private CRUDRespository<PicDetail> _PicNew=new CRUDRespository<PicDetail>(context);
 
-        public ProductServices(CRUDRespository<Product> ProductNew, CRUDRespository<PicDetail> PicNew) {
-
-            _ProductNew = ProductNew;
-            _PicNew = PicNew;
-        }
-
+      
         public bool CreateProduct(Product product,PicDetail pic) {
             try
             {

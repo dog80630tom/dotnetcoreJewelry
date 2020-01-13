@@ -12,6 +12,8 @@ namespace Jewelry.Respository
         bool Crate(T enity);
         bool Update(T enity);
         bool Delete(T enity);
-        public bool SaveChange();
+        bool SaveChange();
+      
+      
     }
 }
