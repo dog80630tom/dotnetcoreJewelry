@@ -9,9 +9,9 @@ namespace Jewelry.Models
 {
     public class AdminRespond
     {
-        [Key, Column(Order = 0)]
+        [Key]
         public int CustomerQuestionID { get; set; }
-        [Key, Column(Order = 1)]
+        [Key]
         public int AdminID { get; set; }
         public string AdminRespond1 { get; set; }
         public System.DateTime AdminRespondTime { get; set; }

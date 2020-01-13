@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jewelry.Respository
 {
-    public interface ICRUD<T>
+    public interface ICRUD<T> 
     {
         Task<T> GetDataByID(int id);
         IEnumerable<T> GetData(string sql);

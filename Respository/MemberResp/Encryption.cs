@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Jewelry.Respository.MemberResp
 {
-    public class Encryption :IEncryption
+    public class Encryption
     {
-        public string EncryptionMethod(string password, string name) {
+        public static string EncryptionMethod(string password, string name) {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
             byte[] encrypt;
             UTF8Encoding encode = new UTF8Encoding();

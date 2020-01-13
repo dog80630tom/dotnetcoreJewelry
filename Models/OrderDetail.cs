@@ -9,12 +9,12 @@ namespace Jewelry.Models
 {
     public class OrderDetail
     {
-        [Key, Column(Order = 0)]
+        [Key]
         public int OrderID
         {
             get; set;
         }
-        [Key, Column(Order = 1)]
+        [Key]
         public int ProductID
         {
             get; set;

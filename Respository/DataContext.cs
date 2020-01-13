@@ -15,6 +15,13 @@ namespace Jewelry.Respository
         
         
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AdminRespond>().HasKey(ba => new { ba.AdminID, ba.CustomerQuestionID });
+            modelBuilder.Entity<OrderDetail>().HasKey(ba => new { ba.OrderID, ba.ProductID });
+            modelBuilder.Entity<WishList>().HasKey(ba => new { ba.MemberID, ba.ProductID });
+        }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<ProducetDetail> ProducetDetils { get; set; }
         public DbSet<PicDetail> PicDetails { get; set; }
