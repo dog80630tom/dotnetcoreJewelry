@@ -50,8 +50,8 @@ namespace Jewelry.Respository
             {
                 try
                 {
-                    _context.SaveChangesAsync();
-                    data.CommitAsync();
+                    _context.SaveChanges();
+                    data.Commit();
                 }
                 catch (Exception ex)
                 {

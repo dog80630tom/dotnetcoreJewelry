@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Jewelry.Models;
 using Jewelry.Respository.MemberResp;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace Jewelry
 {
@@ -38,7 +40,14 @@ namespace Jewelry
                 options.Cookie.IsEssential = true;
             });
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
-      
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
+            {
+                //或許要從組態檔讀取，自己斟酌決定
+                option.LoginPath = new PathString("/FrontEnd/Index");//登入頁
+                option.LogoutPath = new PathString("/FrontEnd/Index");//登出Action
+                                                                   //用戶頁面停留太久，登入逾期，或Controller中用戶登入時也可設定
+                option.ExpireTimeSpan = TimeSpan.FromMinutes(10);//沒給預設14天
+            });
             services.AddScoped(typeof(ICRUD<>),typeof(CRUDRespository<>));
             services.AddControllersWithViews();
         }
@@ -57,13 +66,13 @@ namespace Jewelry
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthorization();
             app.UseRouting();
             
-            app.UseAuthorization();
+           
             app.UseCookiePolicy();
             app.UseEndpoints(endpoints =>
             {
